@@ -1,4 +1,1 @@
-form{border:1px solid #545454;border-radius:3px;padding:40px}input{padding:5px 20px;width:100%;line-height:16px;margin:10px 0}
-
-
-/*# sourceMappingURL=main.css.map*/
+form{margin:auto;padding:20px;text-align:center;border-radius:5px;border:1px solid #fff;width:50%;box-shadow:2px -2px 5px 10px #f2eff2}#generate,input{padding:5px 20px;width:50%;margin:10px 0;border-radius:5px;outline:none;height:40px}#generate{background-color:#6381db;color:#fff}#image{height:250px;width:300px}#tripDetails{margin:20px auto auto;text-align:center}

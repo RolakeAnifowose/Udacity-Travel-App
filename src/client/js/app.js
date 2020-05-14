@@ -28,20 +28,20 @@ function handleSubmit(event) {
             let geoData = geoResponse[0];
             console.log(geoData);
             getWeather(weatherUrl, destination, weatherAPI)
-            .then(function(weatherResponse){
+            .then(function(weatherData){
                 console.log('Weather Response for ', destination)
-                console.log("Weather data is" + JSON.stringify(weatherResponse));
+                console.log("Weather data is" + JSON.stringify(weatherData));
                 try{
                     const departureDate = document.getElementById('departureDate').value;
                     const returnDate = document.getElementById('returnDate').value;
                     document.getElementById('location').innerHTML = "Destination: "+ destination;
                     document.getElementById('tripLength').innerHTML = "Trip length: " + tripLength + " days";
                     document.getElementById('daysAway').innerHTML = "Your trip is " + daysAway + " days away";
-                    document.getElementById('temp').innerHTML = "Temperature: Max " + weatherResponse.high +" Min " + weatherResponse.low; 
+                    document.getElementById('temp').innerHTML = "Temperature: Max " + weatherData.data[0].high_temp +" Min " + weatherResponse.low; 
 
                     const tripData = {
-                        // destination: geoData.placeName,
-                        // country: geoData.countryCode,
+                        destination: geoData.placeName,
+                        country: geoData.countryCode,
                         latitude: geoData.lat,
                         longitude: geoData.lng,
                         departure: date
@@ -76,13 +76,14 @@ const getGeoLocation = async (geonameUrl, destination, geonamesUsername) => {
 
 //Function to get weather data from Weatherbit API
 const getWeather = async (weatherUrl, destination, weatherAPI) => {
-    const response = await fetch(`${weatherUrl}city=${destination}&key=${weatherAPI}`) 
+    const response = await fetch(`${weatherUrl}&city=${destination}&key=${weatherAPI}`) 
     try {
         const weatherData = await response.json;
-        const weatherPrediction = {};
-        weatherPrediction["high"] = weatherData['data'][0].high_temp;
-        weatherPrediction["low"] = weatherData['data'][0].low_temp;
-        return weatherPrediction;
+        // const weatherPrediction = {};
+        // weatherPrediction["high"] = weatherData['data'][0].high_temp;
+        // weatherPrediction["low"] = weatherData['data'][0].low_temp;
+        // return weatherPrediction;
+        return weatherData;
     } catch(error) {
         console.log("Error", error);
     }
@@ -142,15 +143,5 @@ let postData = async (url = '', data = {}) => {
         console.log("Error", error);
     }
 }
-
-//Compare current date with future date
-// function compareDate(todaysDate, tripDate, date){
-//     let tripDate = departureDate;
-//     if(tripDate>todaysDate){
-
-//     } else {
-
-//     }
-// }
 
 export { handleSubmit }

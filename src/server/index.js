@@ -41,4 +41,5 @@ function addWeather(request, response) {
     weatherData['departure'] = data.departureDate
 
     console.log(weatherData);
+    alert(weatherData);
 }
