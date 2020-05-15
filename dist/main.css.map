@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./src/client/styles/form.scss"],"names":[],"mappings":"AAAA,KAAK,yBAAyB,kBAAkB,aAAa,MAAM,iBAAiB,WAAW,iBAAiB","file":"main.css","sourcesContent":["form{border:1px solid #545454;border-radius:3px;padding:40px}input{padding:5px 20px;width:100%;line-height:16px;margin:10px 0}\n"],"sourceRoot":""}
